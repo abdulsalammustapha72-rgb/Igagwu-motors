@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const Api = axios.create({
-    baseURL: 'https://igagwu-motors.onrender.com'
+    baseURL: 'https://igagwu-motors.onrender.com/api'
 });
 
 Api.interceptors.request.use((config) => {
