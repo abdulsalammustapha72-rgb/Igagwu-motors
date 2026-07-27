@@ -48,7 +48,7 @@ const Login = () => {
                 }, 1500);
 
             } catch (err) {
-                setError(err.response?.data?.message || err.message || 'Login failed');
+                setError('Something went wrong, Please try again.');
             };
         };
 
