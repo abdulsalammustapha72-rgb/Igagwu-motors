@@ -44,7 +44,7 @@ const Register = () => {
                 }, 1500);
 
             } catch (err) {
-                setError(err.response?.data?.message || err.message || 'Registration failed');
+                setError('Something went wrong, Please try again.');
             };
         };
 
