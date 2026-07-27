@@ -37,6 +37,8 @@ const Register = () => {
 
                 setRegisterMessage(response.data.message);
 
+                console.log('response.data.message');
+
                 setTimeout(() => {
                     navigate('/verify', {
                         state: { email }
