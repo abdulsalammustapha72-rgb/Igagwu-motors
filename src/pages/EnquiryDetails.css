@@ -1,0 +1,220 @@
+.enquiry-details-page {
+    padding: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.back-enquiries-btn {
+    border: none;
+    background: transparent;
+    color: #555;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 0;
+    margin-bottom: 25px;
+}
+
+.back-enquiries-btn:hover {
+    color: #000;
+}
+
+.enquiry-details-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.enquiry-details-header h1 {
+    margin: 0 0 8px;
+    font-size: 30px;
+}
+
+.enquiry-details-header p {
+    margin: 0;
+    color: hsl(0, 0%, 47%);
+}
+
+.details-status {
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.details-status.pending {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.details-status.contacted {
+    background: #cfe2ff;
+    color: #084298;
+}
+
+.details-status.closed {
+    background: #d1e7dd;
+    color: #0f5132;
+}
+
+.success-message {
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    background: #d1e7dd;
+    color: #0f5132;
+}
+
+.error-message {
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    background: #f8d7da;
+    color: #842029;
+}
+
+.enquiry-loading {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.enquiry-error {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.error-button {
+    padding: 10px 12px;
+    background-color: black;
+    color: white;
+    border-radius: 6px;
+    margin-left: 2rem;
+    transition: 0.25s;
+}
+
+.error-button:hover {
+    background-color: #0f5132;
+}
+
+.enquiry-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.details-card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+}
+
+.details-card h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.enquiry-car-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.car-details-card h3 {
+    margin-top: 5px;
+    font-size: 20px;
+}
+
+.customer-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.customer-detail:last-child {
+    border-bottom: none;
+}
+
+.customer-detail span {
+    font-size: 13px;
+    color: #777;
+}
+
+.customer-detail strong {
+    font-size: 15px;
+    word-break: break-word;
+}
+
+.message-card {
+    grid-column: span 2;
+}
+
+.message-box {
+    background: #f7f7f7;
+    padding: 20px;
+    border-radius: 8px;
+    line-height: 1.7;
+    color: #444;
+    white-space: pre-wrap;
+}
+
+.status-card label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #555;
+}
+
+.status-select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background: white;
+    font-size: 14px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.delete-enquiry-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    background: #dc3545;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.delete-enquiry-btn:hover {
+    background: #bb2d3b;
+}
+
+@media (max-width: 768px) {
+
+    .enquiry-details-page {
+        padding: 20px;
+    }
+
+    .enquiry-details-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .enquiry-details-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .message-card {
+        grid-column: span 1;
+    }
+
+}

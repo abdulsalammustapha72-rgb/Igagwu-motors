@@ -1,0 +1,250 @@
+.contact-page {
+    min-height: 100vh;
+    background: #f5f5f5;
+    padding-bottom: 60px;
+}
+
+.contact-hero {
+    text-align: center;
+    padding: 70px 20px 50px;
+}
+
+.contact-hero h1 {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.contact-hero p {
+    max-width: 650px;
+    margin: auto;
+    color: #666;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+.contact-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 30px;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 40px;
+}
+
+.contact-info,
+.contact-form-container {
+    background: white;
+    padding: 35px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.contact-info h2,
+.contact-form-container h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.contact-info > p {
+    color: #666;
+    line-height: 1.7;
+}
+
+.contact-info-item {
+    margin-top: 30px;
+}
+
+.contact-info-item h3 {
+    margin-bottom: 5px;
+}
+
+.contact-info-item p {
+    color: #666;
+}
+
+.contact-form-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form-container label {
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+
+.contact-form-container input,
+.contact-form-container textarea {
+    width: 100%;
+    padding: 13px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+.contact-form-container textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+.contact-form-container button {
+    padding: 14px;
+    background: #111;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.contact-form-container button:hover {
+    background: #333;
+}
+
+.contact-form-container button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.contact-success {
+    color: green;
+    margin-bottom: 15px;
+}
+
+.contact-error {
+    color: red;
+    margin-bottom: 15px;
+}
+
+.contact-back {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.contact-back a {
+    color: #111;
+    font-weight: bold;
+}
+
+.phone-number {
+    background: none;
+    border: none;
+    padding: 0;
+    color: #0d6efd;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.phone-number:hover {
+    color: #084298;
+}
+
+.phone-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+}
+
+.phone-modal {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    background: white;
+    padding: 35px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+
+.phone-modal h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+
+.phone-modal p {
+    color: #666;
+    margin-bottom: 25px;
+}
+
+.close-modal {
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    border: none;
+    background: none;
+    font-size: 28px;
+    color: #777;
+    cursor: pointer;
+}
+
+.close-modal:hover {
+    color: #111;
+}
+
+.phone-modal-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.phone-modal-actions a {
+    flex: 1;
+    padding: 12px 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.call-btn {
+    background: #111;
+    color: white;
+}
+
+.call-btn:hover {
+    background: #333;
+}
+
+.message-btn {
+    background: #e5e7eb;
+    color: #111;
+}
+
+
+.message-btn:hover {
+    background: #d1d5db;
+}
+
+
+@media (max-width: 500px) {
+
+    .phone-modal {
+        padding: 30px 20px;
+    }
+
+    .phone-modal-actions {
+        flex-direction: column;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .contact-container {
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+    }
+
+    .contact-hero h1 {
+        font-size: 32px;
+    }
+
+}

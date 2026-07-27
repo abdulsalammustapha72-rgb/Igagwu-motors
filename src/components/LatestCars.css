@@ -1,0 +1,18 @@
+.latest {
+    padding: 50px;
+}
+
+.latest h2{
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.latest-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.latest-loading{
+    text-align: center;
+}

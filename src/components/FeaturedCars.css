@@ -1,0 +1,19 @@
+.featured {
+    padding: 50px;
+}
+
+.featured h2{
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.featured-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.feature-loading{
+    text-align: center;
+}
+

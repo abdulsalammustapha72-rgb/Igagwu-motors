@@ -1,0 +1,193 @@
+.enquiries-page {
+    width: 100%;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+
+.enquiries-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.enquiries-header h1 {
+    margin: 0 0 8px;
+    font-size: 28px;
+}
+
+.enquiries-header p {
+    margin: 0;
+    color: #777;
+}
+
+.enquiry-count {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 130px;
+    padding: 15px 20px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.enquiry-count span {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.enquiry-count small {
+    color: #777;
+}
+
+.enquiries-table-container {
+    width: 100%;
+    overflow-x: auto;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.enquiries-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 1000px;
+}
+
+.enquiries-table th {
+    text-align: center;
+    padding: 18px;
+    background: #f7f7f7;
+    font-size: 14px;
+    color: #555;
+}
+
+.enquiries-table td {
+    padding: 18px;
+    border-top: 1px solid #eeeeee;
+    vertical-align: middle;
+}
+
+.vehicle-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.vehicle-info img {
+    width: 65px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.vehicle-info div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.vehicle-info strong {
+    font-size: 14px;
+}
+
+.vehicle-info span {
+    font-size: 12px;
+    color: #777;
+}
+
+.customer-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.customer-info strong {
+    font-size: 14px;
+}
+
+.customer-info span {
+    font-size: 12px;
+    color: #777;
+}
+
+.enquiry-message {
+    max-width: 220px;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #555;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.status-badge.pending {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.status-badge.contacted {
+    background: #cfe2ff;
+    color: #084298;
+}
+
+.status-badge.closed {
+    background: #d1e7dd;
+    color: #0f5132;
+}
+
+.view-enquiry-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    background: #111;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.view-enquiry-btn:hover {
+    opacity: 0.8;
+}
+
+.empty-enquiries {
+    padding: 60px 20px;
+    text-align: center;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.empty-enquiries h2 {
+    margin-bottom: 10px;
+}
+
+.empty-enquiries p {
+    color: #777;
+}
+
+.enquiry-error {
+    margin-bottom: 20px;
+    padding: 12px 15px;
+    background: #f8d7da;
+    color: #842029;
+    border-radius: 6px;
+}
+
+.enquiries-loading {
+    padding: 50px;
+    text-align: center;
+    font-size: 18px;
+}
+

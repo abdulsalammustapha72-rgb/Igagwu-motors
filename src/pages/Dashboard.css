@@ -1,0 +1,239 @@
+.dashboard-layout {
+    min-height: 100vh;
+    display: flex;
+    background: #f5f8f6;
+}
+
+.dashboard-sidebar {
+    width: 240px;
+    min-height: 100vh;
+    background: #111;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 25px 20px;
+    box-sizing: border-box;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 1000;
+}
+
+.sidebar-logo {
+    text-align: center;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #333;
+}
+
+.sidebar-logo h2 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.sidebar-logo span {
+    display: block;
+    margin-top: 5px;
+    font-size: 13px;
+    color: #aaa;
+}
+
+.dashboard-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 30px;
+}
+
+.dashboard-nav a {
+    text-decoration: none;
+    color: #ccc;
+    padding: 12px 15px;
+    border-radius: 6px;
+    transition: 0.2s;
+}
+
+.dashboard-nav a:hover {
+    background: #333;
+    color: white;
+}
+
+.logout-btn {
+    margin-top: auto;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    background: #dc3545;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.logout-btn:hover {
+    background: #bb2d3b;
+}
+
+.dashboard-main {
+    margin-left: 240px;
+    width: calc(100% - 240px);
+    min-height: 100vh;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+@media (max-width: 900px) {
+
+    .dashboard-sidebar {
+        width: 210px;
+        padding: 25px 15px;
+    }
+
+    .dashboard-main {
+        margin-left: 210px;
+        width: calc(100% - 210px);
+    }
+
+    .dashboard-nav a {
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+
+    .dashboard-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 500px) {
+
+    .dashboard-layout {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        min-height: 100vh;
+    }
+
+    .dashboard-sidebar {
+        position: relative;
+        width: 100%;
+        min-height: auto;
+        padding: 20px 15px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .sidebar-logo {
+        padding-bottom: 15px;
+    }
+
+    .sidebar-logo h2 {
+        font-size: 18px;
+    }
+
+    .dashboard-nav {
+        margin-top: 15px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px;
+    }
+
+    .dashboard-nav a {
+        padding: 8px 10px;
+        font-size: 13px;
+    }
+
+    .logout-btn {
+        width: 100%;
+        margin-top: 15px;
+    }
+
+    .dashboard-main {
+        width: 100%;
+        margin-left: 0;
+        min-height: auto;
+        box-sizing: border-box;
+        overflow-x: hidden;
+    }
+
+    .dashboard-cards {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+
+    .card h2 {
+        font-size: 30px;
+    }
+
+    .add-car-page {
+        width: 100%;
+        padding: 20px 15px;
+        box-sizing: border-box;
+    }
+
+    .car-form {
+        grid-template-columns: 1fr;
+    }
+
+
+    .car-form textarea,
+    .car-form input[type=file],
+    .car-form button,
+    .image-preview {
+        grid-column: 1;
+    }
+
+    .manage-cars {
+        padding: 20px 15px;
+    }
+
+    .manage-cars-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .manage-cars-header h1 {
+        font-size: 25px;
+    }
+
+    .car-actions {
+        width: 100%;
+        flex-direction: column;
+    }
+
+
+    .car-actions button,
+    .add-car-btn {
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+    .enquiries-page {
+        padding: 20px 15px;
+    }
+
+
+    .enquiries-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+
+    .enquiry-count {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+}
