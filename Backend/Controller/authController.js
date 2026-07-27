@@ -10,7 +10,7 @@ const resendCode = require('../Model/ResendCode');
 
 const generateAccessToken = require('../Utils/GenerateAccessToken');
 
-const generateCode = require('../Utils/generateCode');
+const generateCode = require('../Utils/GenerateCode');
 
 const generateRefreshToken = require('../Utils/GenerateRefreshToken');
 
