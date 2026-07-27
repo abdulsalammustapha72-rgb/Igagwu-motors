@@ -28,7 +28,7 @@ const ForgotPassword = () => {
             }, 1500);
 
         } catch (err) {
-            setErrorMessage(err.response?.data?.message || err.message);
+            setErrorMessage('Something went wrong, Please try again.');
         };
     };
 
