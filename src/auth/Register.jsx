@@ -36,9 +36,7 @@ const Register = () => {
                 });
 
                 setRegisterMessage(response.data.message);
-
-                console.log('response.data.message');
-
+                
                 setTimeout(() => {
                     navigate('/verify', {
                         state: { email }
@@ -46,6 +44,8 @@ const Register = () => {
                 }, 1500);
 
             } catch (err) {
+                console.log(err.message);
+                
                 setError('Something went wrong, Please try again.');
             };
         };
