@@ -44,8 +44,6 @@ const Register = () => {
                 }, 1500);
 
             } catch (err) {
-                console.log(err.message);
-                
                 setError('Something went wrong, Please try again.');
             };
         };
