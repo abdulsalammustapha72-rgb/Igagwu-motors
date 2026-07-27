@@ -36,7 +36,7 @@ const register = async (req, res) => {
         const code = generateCode();
 
         const hashedPassword = await bcrypt.hash(password, SALT_ROUND);
-
+        console.log('About to send mail');
         const info = await transporter.sendMail({
             from: process.env.EMAIL_USER,
 
@@ -51,6 +51,8 @@ const register = async (req, res) => {
                 <p>Expires in 10 minutes.</p>
             `
         });
+
+        console.log('Mail sent successfull');
     
         await pendingUser.create({
             name,
@@ -65,6 +67,7 @@ const register = async (req, res) => {
         });
 
     } catch (err) {
+        console.log('REGISTRATION ERROR:', err);
         return res.status(500).json({
             message: err.message
         });
