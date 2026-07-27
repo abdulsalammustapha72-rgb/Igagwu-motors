@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const validateName = require('../Utils/nameValidation');
 const validatePhone = require('../Utils/phoneValidation');
 const validateMessage = require('../Utils/messageValidation');
-const validateEmail = require('../Utils/emailValidation');
+const validateEmail = require('../Utils/EmailValidation');
 
 const createEnquiry = async (req, res) => {
     try {
