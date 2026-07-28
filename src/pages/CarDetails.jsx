@@ -79,6 +79,7 @@ const CarDetails = () => {
             setComment('');
 
         } catch (err) {
+            console.log('Review ERROR:,' err);
             setReviewError('Something went wrong, Please try again.');
         };
     };
@@ -106,6 +107,7 @@ const CarDetails = () => {
             setEnquiryMessage('');
 
         } catch (err) {
+            console.log('Enquiry ERROR:,' err);
             setEnquiryError('Something went wrong, Please try again.');
         };
     };
