@@ -82,13 +82,13 @@ const ForgotPassword = () => {
                     <p className="success-message">
                         {message}
                     </p>
-                )};
+                )}
     
                 {errorMessage && (
                     <p className="error-message">
                         {errorMessage}
                     </p>
-                )};
+                )}
     
     
                 <div className="auth-links">
