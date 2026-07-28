@@ -156,7 +156,7 @@ const Verify = () => {
                         : isResending
                             ? 'Sending...'
                             : 'Resend Code'
-                    };
+                    }
                 </button>
     
     
@@ -164,13 +164,13 @@ const Verify = () => {
                     <p className="success-message">
                         {resendCodeMessage}
                     </p>
-                )};
+                )}
     
                 {resendCodeError && (
                     <p className="error-message">
                         {resendCodeError}
                     </p>
-                )};
+                )}
     
     
                 <footer className="auth-footer">
