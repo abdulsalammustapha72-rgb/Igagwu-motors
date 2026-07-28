@@ -1,12 +1,12 @@
 const bcrypt = require('bcrypt');
 
-const transporter = require('../Config/nodemail');
+const jwt = require('jsonwebtoken')
+
+const resend = require('../Config/resend');
 
 const User = require('../Model/User');
 
 const pendingUser = require('../Model/PendingUser');
-
-const resendCode = require('../Model/ResendCode');
 
 const generateAccessToken = require('../Utils/GenerateAccessToken');
 
@@ -36,23 +36,27 @@ const register = async (req, res) => {
         const code = generateCode();
 
         const hashedPassword = await bcrypt.hash(password, SALT_ROUND);
+
         console.log('About to send mail');
-        const info = await transporter.sendMail({
-            from: process.env.EMAIL_USER,
 
+        const { data, error } = await resend.emails.send({
+            from: 'Igagwu Motors <onboarding@resend.dev>',
             to: email,
-
             subject: 'Verify your account',
-
             html: `
                 <h2>Email verification</h2>
-                <p>Your verification code is</p>
-                <p>${code}</p>
+                <p>Your verification code is:</p>
+                <h3>${code}</h3>
                 <p>Expires in 10 minutes.</p>
             `
         });
 
-        console.log('Mail sent successfull');
+        if (error) {
+            console.error('RESEND ERROR:', error);
+            throw new Error(error.message);
+        }
+
+        console.log('Mail sent successfully:', data);
     
         await pendingUser.create({
             name,
@@ -194,12 +198,18 @@ const login = async (req, res) => {
 
 const resendCodes = async (req, res) => {
     try {
-        const { email, code } = req.body;
+        const { email } = req.body;
 
         const pending = await pendingUser.findOne({ email });
         if (!pending) {
             return res.status(404).json({
                 message: 'No pending email.'
+            });
+        };
+
+        if (pending.lastResend && now - pending.lastResend < 60 * 1000) {
+            return res.status(429).json({
+                message: 'You can only resend the code once per minute.'
             });
         };
 
@@ -213,28 +223,26 @@ const resendCodes = async (req, res) => {
 
         const now = Date.now();
 
-        if (pending.lastResend && now - pending.lastResend < 60 * 1000) {
-            return res.status(429).json({
-                message: 'You can only resend the code once per minute.'
-            });
-        };
-        
         await pending.save();
 
-        const info = await transporter.sendMail({
-            from: process.env.EMAIL_USER,
-
+        const { data, error } = await resend.emails.send({
+            from: 'Igagwu Motors <onboarding@resend.dev>',
             to: email,
-
-            subject: 'New Verification Code.',
-
+            subject: 'New Verification Code',
             html: `
                 <h2>Email verification</h2>
-                <p>Your new verification code is</p>
-                <p>${codes}</p>
+                <p>Your new verification code is:</p>
+                <h3>${codes}</h3>
                 <p>Expires in 10 minutes.</p>
             `
         });
+
+        if (error) {
+            console.error('RESEND ERROR:', error);
+            throw new Error(error.message);
+        }
+
+        console.log('Resend verification email sent:', data);
 
         res.status(200).json({
             message: 'New verification code sent.'
@@ -268,20 +276,24 @@ const resendResetCode = async (req, res) => {
 
         await user.save();
 
-        const info = await transporter.sendMail({
-            from: process.env.EMAIL_USER,
-
+        const { data, error } = await resend.emails.send({
+            from: 'Igagwu Motors <onboarding@resend.dev>',
             to: email,
-
-            subject: 'New reset code.',
-
+            subject: 'New reset code',
             html: `
                 <h2>Reset Password</h2>
-                <p>Your new reset code is</p>
-                <p>${codes}</p>
+                <p>Your new reset code is:</p>
+                <h3>${codes}</h3>
                 <p>Expires in 10 minutes.</p>
             `
         });
+        
+        if (error) {
+            console.error('RESEND ERROR:', error);
+            throw new Error(error.message);
+        }
+        
+        console.log('Password reset email sent:', data);
 
         res.status(200).json({
             message: 'New reset code sent.'
@@ -315,20 +327,24 @@ const forgotPassword = async (req, res) => {
 
         await getUser.save();
 
-        const info = await transporter.sendMail({
-            from: process.env.EMAIL_USER,
-
+        const { data, error } = await resend.emails.send({
+            from: 'Igagwu Motors <onboarding@resend.dev>',
             to: email,
-
-            subject: 'Password reset.',
-
+            subject: 'Password reset',
             html: `
-                <h2>Password Reset.</h2>
-                <p>Your reset code is</p>
-                <p>${codes}</p>
+                <h2>Password Reset</h2>
+                <p>Your reset code is:</p>
+                <h3>${codes}</h3>
                 <p>Expires in 10 minutes.</p>
             `
         });
+        
+        if (error) {
+            console.error('RESEND ERROR:', error);
+            throw new Error(error.message);
+        }
+        
+        console.log('Password reset email sent:', data);
 
         res.json({
             message: 'Password reset code sent.'
