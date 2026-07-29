@@ -11,9 +11,15 @@ const createEnquiry = async (req, res) => {
     try {
         const { car, name, email, phone, message } = req.body;
 
-        if ( !name || !email || !phone || !message) {
+        if ( !car || !name || !email || !phone || !message) {
             return res.status(400).json({
                 message: 'All fields are required.'
+            });
+        };
+
+        if (!mongoose.Types.objectId.isValid(car)) {
+            return res.status(400).json({
+                message: 'Invalid car ID.'
             });
         };
 
@@ -42,6 +48,7 @@ const createEnquiry = async (req, res) => {
         };
 
         const newEnquiry = await Enquiry.create({
+            car,
             name,
             email,
             phone,
