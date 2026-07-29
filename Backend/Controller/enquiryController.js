@@ -11,7 +11,7 @@ const createEnquiry = async (req, res) => {
     try {
         const { car, name, email, phone, message } = req.body;
 
-        if ( !car || !name || !email || !phone || !message) {
+        if ( !name || !email || !phone || !message) {
             return res.status(400).json({
                 message: 'All fields are required.'
             });
@@ -48,7 +48,7 @@ const createEnquiry = async (req, res) => {
         };
 
         const newEnquiry = await Enquiry.create({
-            car,
+            car: car || undefined,
             name,
             email,
             phone,
