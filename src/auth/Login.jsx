@@ -48,7 +48,7 @@ const Login = () => {
                 }, 1500);
 
             } catch (err) {
-                setError('Something went wrong, Please try again.');
+                setError(err.response?.data?.message || err.message || 'Something went wrong, Please try again.');
             };
         };
 

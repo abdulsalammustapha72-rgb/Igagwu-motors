@@ -21,7 +21,7 @@ const LatestCars = () => {
             setLatestCars(response.data.latestCar);
 
         } catch (err) {
-            setError('Unable to load latest cars.');
+            setError(err.response?.data?.message || err.message || 'Unable to load latest cars.');
         } finally {
             setLoading(false);
         };

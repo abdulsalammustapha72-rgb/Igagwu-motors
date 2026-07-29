@@ -21,7 +21,7 @@ const FeaturedCars = () => {
             setFeaturedCars(response.data.featuredCars);
 
         } catch (err) {
-            setError('Unable to load featured cars.');
+            setError(err.response?.data?.message || err.message || 'Unable to load featured cars.');
         } finally {
             setLoading(false);
         };

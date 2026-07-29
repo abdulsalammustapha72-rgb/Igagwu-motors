@@ -47,7 +47,7 @@ const ResetPassword = () => {
             }, 1500);
 
         } catch (err) {
-            setErrorMessage('Something went wrong, Please try again.');
+            setErrorMessage(err.response?.data?.message || err.message || 'Something went wrong, Please try again.');
         };
     };
 
@@ -68,7 +68,7 @@ const ResetPassword = () => {
 
             } catch (err) {
                 console.log(err)
-                setResendCodeError('Something went wrong, Please try again.');
+                setResendCodeError(err.response?.data?.message || err.message || 'Something went wrong, Please try again.');
             } finally {
                 setIsResending(false);
             };

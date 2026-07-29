@@ -50,7 +50,7 @@ const Verify = () => {
                 }, 1500);
 
         } catch(err) {
-                setError('Verification failed. Something went wrong, Please try again.');
+                setError(err.response?.data?.message || err.message || 'Verification failed. Something went wrong, Please try again.');
         };
     };
 
@@ -70,7 +70,7 @@ const Verify = () => {
             setCountDown(60);
 
         } catch (err) {
-            setResendCodeError('Failed. Please try again.');
+            setResendCodeError(err.response?.data?.message || err.message || 'Failed. Please try again.');
         } finally {
             setIsResending(false);
         }
