@@ -107,7 +107,6 @@ const CarDetails = () => {
             setEnquiryMessage('');
 
         } catch (err) {
-            console.log('Enquiry ERROR:,' err);
             setEnquiryError('Something went wrong, Please try again.');
         };
     };
