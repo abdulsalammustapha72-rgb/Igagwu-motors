@@ -31,7 +31,7 @@ const EnquiryDetails = () => {
             setStatus(response.data.enquiry.status);
 
         } catch (err) {
-            setError('Unable to load enquiries, Please try again.');
+            setError(err.response?.data?.message || err.message || 'Unable to load enquiries, Please try again.');
         } finally {
             setLoading(false);
         };
@@ -70,8 +70,8 @@ const EnquiryDetails = () => {
             setError('');
 
         } catch (err) {
-            setError(err.response?.data?.message || err.message);
         };
+        setError(err.response?.data?.message || err.message || 'Something went wrong, Please try again.' );
     };
 
     const handleDelete = async () => {
@@ -91,7 +91,7 @@ const EnquiryDetails = () => {
 
             navigate('/dashboard/enquiries');
         } catch (err) {
-            setError('Something went wrong, Please try again.');
+            setError(err.response?.data?.message || err.message ||'Something went wrong, Please try again.');
         };
     };
 

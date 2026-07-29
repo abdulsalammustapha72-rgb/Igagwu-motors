@@ -59,7 +59,7 @@ const AddCar = () => {
             });
 
         } catch (err) {
-            setError('Unable to add car. Please try again.');
+            setError(err.response?.data?.message || err.message || 'Unable to add car. Please try again.');
         };
     };
 

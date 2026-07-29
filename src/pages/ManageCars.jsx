@@ -25,7 +25,7 @@ const ManageCars = () => {
             setCars(response.data.cars);
 
         } catch (err) {
-            setError('Something went wrong, Please try again.');
+            setError(err.response?.data?.message || err.message || 'Something went wrong, Please try again.');
         } finally {
             setLoading(false);
         };
@@ -54,7 +54,7 @@ const ManageCars = () => {
             fetchCars();
 
         } catch (err) {
-            alert('Something went wrong, Please try again.');
+            alert(err.response?.data?.message || err.message || 'Something went wrong, Please try again.');
         };
     };
 
@@ -82,7 +82,7 @@ const ManageCars = () => {
 
         } catch (err) {
 
-            alert('Something went wrong, Please try again.');
+            alert(err.response?.data?.message || err.message || 'Something went wrong, Please try again.');
 
         };
     };

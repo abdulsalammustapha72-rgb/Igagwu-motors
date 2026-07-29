@@ -37,7 +37,7 @@ const CarDetails = () => {
             setSelectedImage(response.data.car.images[0]?.url);
 
         } catch (err) {
-            setError('Something went wrong, Please try again.');
+            setError(err.response?.data?.message || err.message || 'Something went wrong, Please try again.');
         } finally {
             setLoading(false);
         };
@@ -50,7 +50,7 @@ const CarDetails = () => {
             setReviews(response.data.carReview);
 
         } catch (err) {
-            setReviewError('Unable to load reviews, Please try again.');
+            setReviewError(err.response?.data?.message || err.message || 'Unable to load reviews, Please try again.');
         };
     };
 
@@ -79,8 +79,7 @@ const CarDetails = () => {
             setComment('');
 
         } catch (err) {
-            console.log('Review ERROR:,' err);
-            setReviewError('Something went wrong, Please try again.');
+            setReviewError(err.response?.data?.message || err.message || 'Something went wrong, Please try again.');
         };
     };
 
@@ -107,7 +106,7 @@ const CarDetails = () => {
             setEnquiryMessage('');
 
         } catch (err) {
-            setEnquiryError('Something went wrong, Please try again.');
+            setEnquiryError(err.response?.data?.message || err.message || 'Something went wrong, Please try again.');
         };
     };
 

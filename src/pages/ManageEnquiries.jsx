@@ -25,7 +25,7 @@ const ManageEnquiries = () => {
             setEnquiries(response.data.enquiries);
 
         } catch (err) {
-            setError('Unable to load enquiries, Please try again.');
+            setError(err.response?.data?.message || err.message || 'Unable to load enquiries, Please try again.');
         } finally {
             setLoading(false);
         };

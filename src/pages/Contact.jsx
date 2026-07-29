@@ -39,7 +39,7 @@ const Contact = () => {
             setMessage('');
 
         } catch (err) {
-            setError('Failed to send enquiry.');
+            setError(err.response?.data?.message || err.message || 'Failed to send enquiry.');
         } finally {
             setLoading(false);
         };

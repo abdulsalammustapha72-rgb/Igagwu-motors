@@ -22,7 +22,7 @@ const ManageReviews = () => {
             setReviews(response.data.reviews);
 
         } catch (err) {
-            setError('Unable to load reviews, Please try again.');
+            setError(err.response?.data?.message || err.message || 'Unable to load reviews, Please try again.');
         } finally {
             setLoading(false);
         };
@@ -44,7 +44,7 @@ const ManageReviews = () => {
             setReviews((prevReviews) => prevReviews.map((review) => review._id === id ? response.data.review : review));
 
         } catch (err) {
-            setError('Something went wrong, Please try again.');
+            setError(err.response?.data?.message || err.message || 'Something went wrong, Please try again.');
         };
     };
 
@@ -67,7 +67,7 @@ const ManageReviews = () => {
             setReviews((prevReviews) => prevReviews.filter((review) => review._id !== id));
 
         } catch (err) {
-            setError('Something went wrong, Please try again.');
+            setError(err.response?.data?.message || err.message || 'Something went wrong, Please try again.');
         };
     };
 

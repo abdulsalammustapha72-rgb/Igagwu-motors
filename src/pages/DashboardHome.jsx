@@ -16,7 +16,7 @@ const DashboardHome = () => {
             setStats(response.data);
 
         } catch (err) {
-            setError('Unable to load dashboard, Please try again.');
+            setError(err.response?.data?.message || err.message || 'Unable to load dashboard, Please try again.');
         } finally {
             setLoading(false);
         };

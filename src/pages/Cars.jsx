@@ -50,7 +50,7 @@ const Cars = () => {
             setTotalPages(response.data.totalPages);
 
         } catch (err) {
-            setError('Unable to load available cars.');
+            setError(err.response?.data?.message || err.message || 'Unable to load available cars.');
         } finally {
             setLoading(false);
         };
@@ -63,7 +63,7 @@ const Cars = () => {
             setBrands(response.data.brands);
 
         } catch (err) {
-            setError('Unable to load brands.');
+            setError(err.response?.data?.message || err.message || 'Unable to load brands.');
         };
     };
     
