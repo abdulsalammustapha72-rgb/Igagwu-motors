@@ -17,7 +17,7 @@ const createEnquiry = async (req, res) => {
             });
         };
 
-        if (!mongoose.Types.objectId.isValid(car)) {
+        if (car && !mongoose.Types.ObjectId.isValid(car)) {
             return res.status(400).json({
                 message: 'Invalid car ID.'
             });
