@@ -18,7 +18,7 @@
     display: block;
     width: 50px;
     height: 4px;
-    background: #111;
+    background: var(--text-color);
     margin: 15px auto 30px;
     border-radius: 5px;
 }
@@ -29,33 +29,50 @@
     gap: 12px;
     padding: 20px;
     margin-bottom: 35px;
-    background: #fff;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
     border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 5px 20px var(--shadow-color);
+    transition:
+        background 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+
 }
 
 .filters input {
     width: 100%;
     padding: 13px 15px;
     box-sizing: border-box;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     font-size: 14px;
     outline: none;
-    transition: 0.2s;
+    background: var(--input-bg);
+    color: var(--text-color);
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 .filters select {
     width: 100%;
     padding: 13px 12px;
     box-sizing: border-box;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color);
     border-radius: 8px;
-    background: white;
+    background: var(--input-bg);
+    color: var(--text-color);
     font-size: 14px;
     cursor: pointer;
     outline: none;
-    transition: 0.2s;
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 .filters input:focus,
@@ -102,15 +119,15 @@
 
 
 .pagination button:disabled {
-    background: #ddd;
-    color: #888;
+    background: var(--border-color);
+    color: var(--secondary-text);
     cursor: not-allowed;
 }
 
 .pagination span {
     font-size: 15px;
     font-weight: 600;
-    color: #444;
+    color: var(--secondary-text);
 }
 
 @media (max-width: 1000px) {
@@ -171,9 +188,66 @@
         flex-wrap: wrap;
     }
 
-
     .pagination button {
         padding: 10px 15px;
     }
 
+}
+
+.search-container{
+    position:relative;
+}
+
+.search-dropdown{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--card-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 5px 15px var(--shadow-color);
+    z-index: 100;
+    animation: searchDrop 0.18s ease-out;
+}
+
+.search-item strong {
+    display: block;
+    color: var(--text-color);
+}
+
+.search-item small {
+    color: var(--secondary-text);
+}
+
+.search-item{
+    display:flex;
+    gap:12px;
+    align-items:center;
+    padding:10px;
+    cursor:pointer;
+}
+
+.search-item:hover{
+    background:#f3f3f3;
+}
+
+.search-item img{
+    width:60px;
+    height:45px;
+    object-fit:cover;
+    border-radius:6px;
+}
+
+@keyframes searchDrop {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

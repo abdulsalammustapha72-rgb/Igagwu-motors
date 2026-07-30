@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import Api from '../api/Axios';
 
 import './CarDetails.css';
@@ -16,7 +17,7 @@ const CarDetails = () => {
     const [reviewMessage, setReviewMessage] = useState('');
     const [reviewError, setReviewError] = useState('');
     const [name, setName] = useState('');
-    const [email, setEmail] = useState();
+    const [email, setEmail] = useState('');
     const [rating, setRating] = useState(5);
     const [comment, setComment] = useState('');
     const [enquiryName, setEnquiryName] = useState('');
@@ -124,6 +125,48 @@ const CarDetails = () => {
     };
 
     return (
+        <>
+            <Helmet>
+            <title>
+                {`${car.year} ${car.brand} ${car.model} for Sale | Igagwu Motors`}
+            </title>
+
+            <meta
+                name="description"
+                content={`${car.year} ${car.brand} ${car.model} for sale at Igagwu Motors. View the price, mileage, condition, transmission, fuel type, and other vehicle details.`}
+            />
+
+            <meta
+                property="og:title"
+                content={`${car.year} ${car.brand} ${car.model} | Igagwu Motors`}
+            />
+
+            <meta
+                property="og:description"
+                content={`View details, price, and specifications for this ${car.year} ${car.brand} ${car.model}.`}
+            />
+
+            <meta
+                property="og:image"
+                content={car.images?.[0]?.url}
+            />
+
+            <meta
+                property="og:type"
+                content="website"
+            />
+
+            <meta
+                property="og:url"
+                content={`https://igagwu-motors-1.onrender.com/cars/${car._id}`}
+            />
+
+            <link
+                rel="canonical"
+                href={`https://igagwu-motors-1.onrender.com/cars/${car._id}`}
+            />
+            </Helmet>
+            
         <section className="car-details">
             <div className="car-images">
                 <img src={selectedImage} alt={car.title} className='main-image' />
@@ -253,7 +296,8 @@ const CarDetails = () => {
                     </form>
                 </div>
             </div>
-        </section>
+            </section>
+        </>    
     );
 };
 

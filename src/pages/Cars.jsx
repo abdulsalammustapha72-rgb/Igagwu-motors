@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import Api from '../api/Axios';
 import CarCard from '../components/CarCard';
 
@@ -6,9 +8,12 @@ import './Cars.css';
 
 const Cars = () => {
 
+    const navigate = useNavigate();
+
     const [cars, setCars] = useState([]);
     const [loading, setLoading] = useState(true);
     const [search, setSearch] = useState('');
+    const [searchSuggestions, setSearchSuggestions] = useState([]);
     const [brands, setBrands] = useState([]);
     const [brand, setBrand] = useState('');
     const [sort, setSort] = useState('');
@@ -66,101 +71,194 @@ const Cars = () => {
             setError(err.response?.data?.message || err.message || 'Unable to load brands.');
         };
     };
+
+    const fetchSuggestions = async () => {
+
+        if (search.trim().length < 2) {
+            setSearchSuggestions([]);
+            return;
+        };
+    
+        try {
+    
+            const response = await Api.get("/search", {
+                params: {
+                    q: search
+                }
+            });
+    
+            setSearchSuggestions(response.data);
+    
+        } catch (err) {
+            console.log(err);
+        };
+    };
+
+    useEffect(() => {
+        fetchSuggestions();
+    }, [search]);
     
     return (
-        <section className="cars-page">
-            <h1>Available Cars</h1>
-          
-            <div className="filters">
-                <input
-                    type="text"
-                    placeholder='Seach cars....'
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
-                />
-                <select
-                    value={brand}
-                    onChange={(e) => setBrand(e.target.value)}
-                >
-                    <option value="">All Brands</option>
-                    {brands.map((item) => (
-                        <option key={item} value={item} >
-                            {item}
-                        </option>
-                    ))}
-                </select>
-                <select
-                    value={sort}
-                    onChange={(e) => setSort(e.target.value)}
-                >
-                    <option value="">Newest</option>
-                    <option value="priceAsc">
-                        Lowest Price
-                    </option>
-                    <option value="priceDesc">
-                        Highest Price
-                    </option>
-                </select>
-                <select
-                    value={transmission}
-                    onChange={(e) => setTransmission(e.target.value)}
-                >
-                    <option value="">All Transmission</option>
-                    <option value="Automatic">Automatic</option>
-                    <option value="Manual">Manual</option>
-                </select>
-                <select
-                    value={fuelType}
-                    onChange={(e) => setFuelType(e.target.value)}
-                >
-                    <option value="">All Fuel Types</option>
-                    <option value="Petrol">Petrol</option>
-                    <option value="Diesel">Diesel</option>
-                    <option value="Electric">Electric</option>
-                    <option value="Hybrid">Hybrid</option>
-                </select>
-                <select
-                    value={condition}
-                    onChange={(e) => setCondition(e.target.value)}
-                >
-                    <option value="">All Condition</option>
-                    <option value="New">New</option>
-                    <option value="Used">Used</option>
-                </select>
-            </div>
+        <>
+            <Helmet>
+            <title>Cars for Sale in Lagos | Igagwu Motors</title>
 
-            {
-                loading ? (
-                    <p>Loading cars....</p>
-                ) : cars.length === 0 ? (
-                    <p>No cars found.</p>
-                ) : (
-                    <div className="cars-grid">
-                        {cars.map((car) => (
-                            <CarCard key={car._id} car={car} />
+            <meta
+                name="description"
+                content="Browse available cars for sale in Lagos from Igagwu Motors. Search and filter vehicles by brand, price, transmission, fuel type, and condition."
+            />
+
+            <meta
+                property="og:title"
+                content="Cars for Sale in Lagos | Igagwu Motors"
+            />
+
+            <meta
+                property="og:description"
+                content="Browse and filter available vehicles for sale from Igagwu Motors."
+            />
+
+            <meta
+                property="og:type"
+                content="website"
+            />
+            </Helmet>
+                <section className="cars-page">
+                <h1>Available Cars</h1>
+            
+                <div className="filters">
+                    <div className="search-container">
+
+                        <input
+                            type="text"
+                            placeholder="Search cars..."
+                            value={search}
+                            onChange={(e)=>setSearch(e.target.value)}
+                        />
+
+                        {
+                            searchSuggestions.length > 0 && (
+
+                                <div className="search-dropdown">
+                                    {
+                                        searchSuggestions.map((car)=>(
+                                            <div
+                                                key={car._id}
+                                                className="search-item"
+                                                onClick={() => {
+                                                    navigate(`/cars/${car._id}`)
+                                                    setSearchSuggestions([])
+                                                    setSearch("")
+                                                }}
+                                            >
+
+                                                <img
+                                                    src={car.images?.[0]?.url}
+                                                    alt={car.title}
+                                                />
+
+                                                <div>
+
+                                                    <strong>{car.title}</strong>
+
+                                                    <small>{car.brand}</small>
+
+                                                </div>
+
+                                            </div>
+                                        ))
+                                    }
+
+                                </div>
+
+                            )
+                        }
+
+                        </div>
+                    <select
+                        value={brand}
+                        onChange={(e) => setBrand(e.target.value)}
+                    >
+                        <option value="">All Brands</option>
+                        {brands.map((item) => (
+                            <option key={item} value={item} >
+                                {item}
+                            </option>
                         ))}
-                    </div>
-                )}
-          
-            <div className="pagination">
-                <button
-                    disabled={currentPage === 1}
-                    onClick={() => setCurrentPage(currentPage - 1)}
-                >
-                    Previous
-                </button>
-                <span>
-                    Page {currentPage} of {totalPages}
-                </span>
-                <button
-                    disabled={currentPage === totalPages}
-                    onClick={() => setCurrentPage(currentPage + 1)}
-                >
-                    Next
-                </button>
-            </div>
-            <p>{error}</p>
-        </section>
+                    </select>
+                    <select
+                        value={sort}
+                        onChange={(e) => setSort(e.target.value)}
+                    >
+                        <option value="">Newest</option>
+                        <option value="priceAsc">
+                            Lowest Price
+                        </option>
+                        <option value="priceDesc">
+                            Highest Price
+                        </option>
+                    </select>
+                    <select
+                        value={transmission}
+                        onChange={(e) => setTransmission(e.target.value)}
+                    >
+                        <option value="">All Transmission</option>
+                        <option value="Automatic">Automatic</option>
+                        <option value="Manual">Manual</option>
+                    </select>
+                    <select
+                        value={fuelType}
+                        onChange={(e) => setFuelType(e.target.value)}
+                    >
+                        <option value="">All Fuel Types</option>
+                        <option value="Petrol">Petrol</option>
+                        <option value="Diesel">Diesel</option>
+                        <option value="Electric">Electric</option>
+                        <option value="Hybrid">Hybrid</option>
+                    </select>
+                    <select
+                        value={condition}
+                        onChange={(e) => setCondition(e.target.value)}
+                    >
+                        <option value="">All Condition</option>
+                        <option value="New">New</option>
+                        <option value="Used">Used</option>
+                    </select>
+                </div>
+
+                {
+                    loading ? (
+                        <p>Loading cars....</p>
+                    ) : cars.length === 0 ? (
+                        <p>No cars found.</p>
+                    ) : (
+                        <div className="cars-grid">
+                            {cars.map((car) => (
+                                <CarCard key={car._id} car={car} />
+                            ))}
+                        </div>
+                    )}
+            
+                <div className="pagination">
+                    <button
+                        disabled={currentPage === 1}
+                        onClick={() => setCurrentPage(currentPage - 1)}
+                    >
+                        Previous
+                    </button>
+                    <span>
+                        Page {currentPage} of {totalPages}
+                    </span>
+                    <button
+                        disabled={currentPage === totalPages}
+                        onClick={() => setCurrentPage(currentPage + 1)}
+                    >
+                        Next
+                    </button>
+                </div>
+                <p>{error}</p>
+            </section>
+        </>
     );
 };
 

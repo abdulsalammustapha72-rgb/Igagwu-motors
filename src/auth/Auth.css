@@ -3,19 +3,35 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #f4f5f7;
+    background: var(--bg-color);
+    color: var(--text-color);
     padding: 40px 20px;
     box-sizing: border-box;
+    transition:
+        background 0.25s ease,
+        color 0.25s ease;
 }
 
 .auth-container {
     width: 100%;
     max-width: 450px;
-    background: #ffffff;
+    background: var(--card-bg);
+    color: var(--text-color);
     padding: 40px;
+    border: 1px solid var(--border-color);
     border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 10px 30px var(--shadow-color);
     box-sizing: border-box;
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.25s ease;
+}
+
+.auth-container:hover {
+    transform: translateY(-2px);
 }
 
 .auth-logo {
@@ -25,25 +41,25 @@
 
 .auth-logo h1 {
     margin: 0;
-    color: #111111;
+    color: var(--text-color);
     font-size: 28px;
 }
 
 .auth-logo p {
     margin-top: 8px;
-    color: #777777;
+    color: var(--secondary-text);
     font-size: 14px;
 }
 
 .auth-container h2 {
     text-align: center;
     margin-bottom: 10px;
-    color: #222222;
+    color: var(--text-color);
 }
 
 .auth-subtitle {
     text-align: center;
-    color: #777777;
+    color: var(--secondary-text);
     margin-bottom: 30px;
 }
 
@@ -55,24 +71,34 @@
 
 .auth-form label {
     font-weight: 600;
-    color: #333333;
+    color: var(--text-color);
     margin-top: 8px;
 }
 
 .auth-form input {
     width: 100%;
     padding: 13px 14px;
-    border: 1px solid #dddddd;
+    border: 1px solid var(--border-color);
     border-radius: 7px;
     font-size: 15px;
     box-sizing: border-box;
     outline: none;
-    transition: 0.2s;
+    background: var(--input-bg);
+    color: var(--text-color);
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.auth-form input::placeholder {
+    color: var(--secondary-text);
 }
 
 .auth-form input:focus {
     border-color: #e63946;
-    box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.1);
+    box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.12);
 }
 
 .auth-btn {
@@ -85,16 +111,27 @@
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-    transition: 0.2s;
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 .auth-btn:hover {
     background: #c92f3b;
+    transform: translateY(-2px);
+    box-shadow: 0 7px 18px rgba(230, 57, 70, 0.25);
+}
+
+.auth-btn:active {
+    transform: translateY(0);
 }
 
 .auth-btn:disabled {
     background: #999999;
     cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
 }
 
 .remember-container {
@@ -102,10 +139,12 @@
     align-items: center;
     gap: 8px;
     margin-top: 12px;
+    color: var(--text-color);
 }
 
 .remember-container input {
     width: auto;
+    accent-color: #e63946;
 }
 
 .auth-links {
@@ -115,21 +154,25 @@
 
 .auth-links p {
     margin: 10px 0;
+    color: var(--secondary-text);
 }
 
 .auth-links a {
     color: #e63946;
     text-decoration: none;
     font-weight: 500;
+    transition: color 0.2s ease;
 }
 
 .auth-links a:hover {
+    color: #c92f3b;
     text-decoration: underline;
 }
 
 .success-message {
     color: #198754;
-    background: #e8f7ee;
+    background: rgba(25, 135, 84, 0.12);
+    border: 1px solid rgba(25, 135, 84, 0.2);
     padding: 10px;
     border-radius: 6px;
     margin-top: 15px;
@@ -138,7 +181,8 @@
 
 .error-message {
     color: #dc3545;
-    background: #fdecec;
+    background: rgba(220, 53, 69, 0.12);
+    border: 1px solid rgba(220, 53, 69, 0.2);
     padding: 10px;
     border-radius: 6px;
     margin-top: 15px;
@@ -148,7 +192,7 @@
 .auth-footer {
     margin-top: 30px;
     text-align: center;
-    color: #888888;
+    color: var(--secondary-text);
     font-size: 13px;
 }
 
@@ -158,15 +202,21 @@
     margin-top: 12px;
     padding: 12px;
     border-radius: 7px;
-    border: 1px solid #dddddd;
-    background: white;
-    color: #333333;
+    border: 1px solid var(--border-color);
+    background: var(--input-bg);
+    color: var(--text-color);
     cursor: pointer;
     font-size: 15px;
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
 }
 
 .resend-btn:hover {
-    background: #f5f5f5;
+    background: var(--border-color);
+    transform: translateY(-2px);
 }
 
 @media (max-width: 500px) {

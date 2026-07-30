@@ -3,16 +3,23 @@
     grid-template-columns: 1fr 1fr;
     gap: 40px;
     padding: 50px;
+    background: var(--bg-color);
+    color: var(--text-color);
+    transition:
+        background 0.25s ease,
+        color 0.25s ease;
 }
 
 .car-details-loading {
     margin-top: 3rem;
     text-align: center;
+    color: var(--text-color);
 }
 
 .car-details-error {
     margin-top: 3rem;
     text-align: center;
+    color: var(--text-color);
 }
 
 .main-image {
@@ -31,6 +38,7 @@
 
 .car-info p {
     margin-bottom: 10px;
+    color: var(--text-color);
 }
 
 .specs {
@@ -54,13 +62,16 @@
     cursor: pointer;
     border: 2px solid transparent;
     border-radius: 8px;
-    transition:  transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
 }
 
 .thumbnail:hover {
     transform: scale(1.25);
     border-color: #0a7b25;
-    box-shadow: 0 8px 18px rgba(0,0,0,.35);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
 }
 
 .reviews {
@@ -69,10 +80,15 @@
 
 .review-card {
     padding: 20px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color);
     border-radius: 10px;
     margin-bottom: 20px;
-    background: #fafafa;
+    background: var(--card-bg);
+    color: var(--text-color);
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease;
 }
 
 .review-card h4 {
@@ -95,11 +111,37 @@
 
 .review-form input,
 .review-form select,
-.review-form textarea {
+.review-form textarea,
+.enquiry-form input,
+.enquiry-form textarea {
     padding: 12px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--border-color);
     border-radius: 6px;
     font-size: 16px;
+    background: var(--input-bg);
+    color: var(--text-color);
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.review-form input::placeholder,
+.review-form textarea::placeholder,
+.enquiry-form input::placeholder,
+.enquiry-form textarea::placeholder {
+    color: var(--secondary-text);
+}
+
+.review-form input:focus,
+.review-form select:focus,
+.review-form textarea:focus,
+.enquiry-form input:focus,
+.enquiry-form textarea:focus {
+    outline: none;
+    border-color: var(--text-color);
+    box-shadow: 0 0 0 2px var(--shadow-color);
 }
 
 .review-form textarea {
@@ -114,10 +156,16 @@
     padding: 12px;
     border-radius: 6px;
     cursor: pointer;
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 .review-form button:hover {
     background: #075f1c;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px var(--shadow-color);
 }
 
 .enquiry-form {
@@ -128,14 +176,6 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
-}
-
-.enquiry-form input,
-.enquiry-form textarea {
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 16px;
 }
 
 .enquiry-form textarea {
@@ -150,11 +190,16 @@
     padding: 14px;
     cursor: pointer;
     border-radius: 6px;
-    transition: .3s;
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 .enquiry-form button:hover {
     background: #333;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px var(--shadow-color);
 }
 
 .back-to-home {
@@ -164,21 +209,26 @@
     padding: 14px;
     cursor: pointer;
     border-radius: 6px;
-    transition: .3s;
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
-.back-to-home:hover{
+.back-to-home:hover {
     background: #333;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px var(--shadow-color);
 }
 
-@media(max-width: 768px){
+@media (max-width: 768px) {
 
-    .car-details{
+    .car-details {
         grid-template-columns: 1fr;
         padding: 20px;
     }
 
-    .specs{
+    .specs {
         grid-template-columns: 1fr;
     }
 }

@@ -1,6 +1,9 @@
 .about-page {
-    background: #f7f7f7;
-    color: #111;
+    background: var(--bg-color);
+    color: var(--text-color);
+    transition:
+        background 0.25s ease,
+        color 0.25s ease;
 }
 
 .about-hero {
@@ -55,7 +58,11 @@
     gap: 70px;
     align-items: center;
     padding: 100px 8%;
-    background: white;
+    background: var(--card-bg);
+    color: var(--text-color);
+    transition:
+        background 0.25s ease,
+        color 0.25s ease;
 }
 
 .about-intro-image {
@@ -88,7 +95,7 @@
 .about-intro-content p:not(.section-label) {
     font-size: 16px;
     line-height: 1.8;
-    color: #666;
+    color: var(--secondary-text);
     margin-bottom: 20px;
 }
 
@@ -141,7 +148,11 @@
 
 .why-us {
     padding: 100px 8%;
-    background: #f7f7f7;
+    background: var(--bg-color);
+    color: var(--text-color);
+    transition:
+        background 0.25s ease,
+        color 0.25s ease;
 }
 
 .why-us-heading {
@@ -161,20 +172,23 @@
 }
 
 .why-card {
-    background: white;
+    background: var(--card-bg);
+    color: var(--text-color);
     padding: 40px 30px;
     min-height: 280px;
-
-    border: 1px solid #e5e5e5;
+    border: 1px solid var(--border-color);
 
     transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease,
         transform 0.3s ease,
         box-shadow 0.3s ease;
 }
 
 .why-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 15px 40px var(--shadow-color);
 }
 
 .why-card span {
@@ -189,7 +203,7 @@
 }
 
 .why-card p {
-    color: #666;
+    color: var(--secondary-text);
     line-height: 1.7;
 }
 
@@ -224,7 +238,15 @@
     text-decoration: none;
     font-weight: 600;
 
-    transition: 0.3s ease;
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.about-cta-buttons a:hover {
+    transform: translateY(-2px);
 }
 
 .about-cta-buttons a:first-child {

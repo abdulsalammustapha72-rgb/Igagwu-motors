@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Api from '../api/Axios';
 import { useNavigate, Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 import './Auth.css';
 
@@ -34,6 +35,15 @@ const ForgotPassword = () => {
 
     return (
         <div className="auth-page">
+            
+            <Helmet>
+            <title>Reset Your Password | Igagwu & Sons Motor LTD</title>
+
+            <meta
+                name="description"
+                content="Reset your Igagwu & Sons Motor LTD account password."
+            />
+            </Helmet>
     
             <div className="auth-container">
     

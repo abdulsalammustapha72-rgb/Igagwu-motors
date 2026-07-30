@@ -1,11 +1,14 @@
 import { Link, NavLink } from 'react-router-dom';
 import { useState } from 'react';
+import { useContext } from 'react';
+import { ThemeContext } from '../context/ThemeContext';
 
 import './Navbar.css';
 
 const Navbar = () => {
 
     const [menuOpen, setMenuOpen] = useState(false);
+    const { theme, toggleTheme } = useContext(ThemeContext);
 
     const closeMenu = () => {
         setMenuOpen(false);
@@ -64,6 +67,13 @@ const Navbar = () => {
                 <span></span>
             </button>
 
+            <button
+                type="button"
+                onClick={toggleTheme}
+                aria-label="Toggle dark mode"
+            >
+                {theme === 'light' ? '🌙' : '☀️'}
+            </button>
         </nav>
     );
 };

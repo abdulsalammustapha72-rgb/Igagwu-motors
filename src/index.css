@@ -1,0 +1,26 @@
+:root {
+    --bg-color: #ffffff;
+    --text-color: #111111;
+    --card-color: #ffffff;
+    --border-color: #dddddd;
+    --input-bg: #ffffff;
+    --shadow-color: rgba(0, 0, 0, 0.08);
+}
+
+:root[data-theme="dark"] {
+    --bg-color: #111827;
+    --text-color: #f9fafb;
+    --card-color: #1f2937;
+    --border-color: #374151;
+    --input-bg: #111827;
+    --shadow-color: rgba(0, 0, 0, 0.35);
+}
+
+body {
+    margin: 0;
+    background: var(--bg-color);
+    color: var(--text-color);
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease;
+}

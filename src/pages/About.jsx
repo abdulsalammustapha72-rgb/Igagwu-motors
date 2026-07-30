@@ -1,9 +1,36 @@
 import Navbar from '../components/Navbar';
+import { Helmet } from 'react-helmet-async';
 import './About.css';
 
 const About = () => {
     return (
         <>
+            <Helmet>
+                <title>
+                    About Igagwu & Sons Motor LTD | Igagwu Motors
+                </title>
+
+                <meta
+                    name="description"
+                    content="Learn more about Igagwu & Sons Motor LTD, our mission, our values, and our commitment to quality vehicles and trusted customer service."
+                />
+
+                <meta
+                    property="og:title"
+                    content="About Igagwu & Sons Motor LTD | Igagwu Motors"
+                />
+
+                <meta
+                    property="og:description"
+                    content="Learn more about Igagwu & Sons Motor LTD and our commitment to quality vehicles, transparency, and customer service."
+                />
+
+                <meta
+                    property="og:type"
+                    content="website"
+                />
+            </Helmet>
+            
             <Navbar />
 
             <main className="about-page">

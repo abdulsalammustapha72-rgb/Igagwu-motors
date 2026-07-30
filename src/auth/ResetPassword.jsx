@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import Api from '../api/Axios';
 
 import './Auth.css';
@@ -76,6 +77,15 @@ const ResetPassword = () => {
     
     return (
         <div className="auth-page">
+
+        <Helmet>
+            <title>Reset Password | Igagwu & Sons Motor LTD</title>
+
+            <meta
+                name="description"
+                content="Enter your verification code and create a new password for your Igagwu & Sons Motor LTD account."
+            />
+        </Helmet>
     
             <div className="auth-container">
     

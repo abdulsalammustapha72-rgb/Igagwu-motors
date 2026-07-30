@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Helmet } from 'react-helmet-async';
 import Api from "../api/Axios";
 
 import './Auth.css';
@@ -78,6 +79,15 @@ const Verify = () => {
 
     return (
         <div className="auth-page">
+
+        <Helmet>
+            <title>Verify Your Email | Igagwu & Sons Motor LTD</title>
+
+            <meta
+                name="description"
+                content="Verify your email address to activate your Igagwu & Sons Motor LTD account."
+            />
+        </Helmet>
     
             <div className="auth-container">
     

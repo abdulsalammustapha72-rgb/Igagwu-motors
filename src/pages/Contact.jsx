@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
+import { Helmet } from 'react-helmet-async';
 import Api from '../api/Axios';
 import './Contact.css';
 
@@ -47,6 +48,31 @@ const Contact = () => {
 
     return (
         <>
+            <Helmet>
+                <title>
+                    Contact Igagwu & Sons Motor LTD | Igagwu Motors
+                </title>
+
+                <meta
+                    name="description"
+                    content="Contact Igagwu & Sons Motor LTD in Lagos, Nigeria. Ask about available vehicles, pricing, and car enquiries."
+                />
+
+                <meta
+                    property="og:title"
+                    content="Contact Igagwu & Sons Motor LTD | Igagwu Motors"
+                />
+
+                <meta
+                    property="og:description"
+                    content="Get in touch with Igagwu & Sons Motor LTD about vehicles, pricing, and car enquiries in Lagos."
+                />
+
+                <meta
+                    property="og:type"
+                    content="website"
+                />
+            </Helmet>
             <Navbar />
 
             <main className="contact-page">

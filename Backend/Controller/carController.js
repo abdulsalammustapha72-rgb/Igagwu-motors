@@ -502,6 +502,33 @@ const getBrands = async (req, res) => {
     };
 };
 
+const searchCars = async (req, res) => {
+    try {
+        const { q } = req.query;
+
+        if (!q) {
+            return res.json([]);
+        };
+
+        const cars = await Car.find({
+            $or: [
+                { title: { $regex: q, $options: "i" } },
+                { brand: { $regex: q, $options: "i" } },
+                { model: { $regex: q, $options: "i" } }
+            ]
+        }).select("title brand model price images").limit(5);
+
+        res.json(cars);
+
+    } catch (err) {
+        console.log(err);
+
+        res.status(500).json({
+            message: "Server Error"
+        });
+    };
+};
+
 module.exports = {
     addCar,
     getAllCars,
@@ -514,5 +541,6 @@ module.exports = {
     softDeleteCar,
     restoreCar,
     latestCars,
-    getBrands
+    getBrands,
+    searchCars
 };

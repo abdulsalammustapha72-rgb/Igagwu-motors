@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Api from '../api/Axios';
 import { useNavigate, Link } from "react-router-dom";
+import { Helmet } from 'react-helmet-async';
 
 import './Auth.css';
 
@@ -54,6 +55,15 @@ const Register = () => {
 
     return (
         <div className="auth-page">
+
+            <Helmet>
+                <title>Create an Account | Igagwu & Sons Motor LTD</title>
+
+                <meta
+                    name="description"
+                    content="Create an account with Igagwu & Sons Motor LTD."
+                />
+            </Helmet>
     
             <div className="auth-container">
     
