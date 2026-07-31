@@ -2,6 +2,7 @@
     min-height: 100vh;
     display: flex;
     background: #f5f8f6;
+    color: #111;
 }
 
 .dashboard-sidebar {
@@ -81,6 +82,7 @@
     min-height: 100vh;
     box-sizing: border-box;
     overflow-x: hidden;
+    color: #111;
 }
 
 @media (max-width: 900px) {
