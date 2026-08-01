@@ -189,7 +189,7 @@
 
         list-style: none;
 
-        background: #010101;
+        background: #333;
         border-bottom: 1px solid var(--border-color);
         box-shadow: 0 10px 20px var(--shadow-color);
 
@@ -227,7 +227,7 @@
         padding: 16px 10px;
 
         text-align: center;
-        color: var(--text-color);
+        color: #f0f0f0;
         font-size: 16px;
         text-decoration: none;
     }
