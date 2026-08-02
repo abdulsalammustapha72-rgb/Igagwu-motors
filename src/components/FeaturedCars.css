@@ -17,3 +17,10 @@
     text-align: center;
 }
 
+@media (max-width: 600px) {
+    .featured {
+        display: flex;
+        flex-direction: column;
+        padding: 30px 15px;
+    }
+}
