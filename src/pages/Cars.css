@@ -92,6 +92,16 @@
     text-align: center;
 }
 
+.contact-link {
+    color: var(--text-color);
+    font-weight: bold;
+    transition: color 0.2s ease;
+}
+
+.contact-link:hover {
+    color: var(--primary-color);
+}
+
 .pagination {
     display: flex;
     justify-content: center;

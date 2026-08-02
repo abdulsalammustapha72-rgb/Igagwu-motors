@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import Api from '../api/Axios';
 import CarCard from '../components/CarCard';
@@ -230,7 +230,10 @@ const Cars = () => {
                     loading ? (
                         <p>Loading cars....</p>
                     ) : cars.length === 0 ? (
-                        <p>No cars found.</p>
+                            <p>
+                                No cars found.
+                                <Link className='contact-link' to={'/contact'}><p>Contact us for more cars.</p></Link>
+                            </p>
                     ) : (
                         <div className="cars-grid">
                             {cars.map((car) => (
